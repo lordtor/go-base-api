@@ -15,16 +15,16 @@ type HealthCheck struct {
 }
 
 type ApiServer struct {
-	ListenPort      int         `yaml:"listen_port"`
-	WriteTimeout    int         `yaml:"write_timeout"`
-	ReadTimeout     int         `yaml:"read_timeout"`
-	GracefulTimeout int         `yaml:"graceful_timeout"`
-	IdleTimeout     int         `yaml:"idle_timeout"`
-	Swagger         bool        `yaml:"swagger"`
-	LocalSwagger    bool        `yaml:"local_swagger"`
-	Schema          string      `yaml:"schema"`
-	App             string      `yaml:"app"`
-	Host            string      `yaml:"host"`
+	ListenPort      int         `json:"listen_port" yaml:"listen_port"`
+	WriteTimeout    int         `json:"write_timeout" yaml:"write_timeout"`
+	ReadTimeout     int         `json:"read_timeout" yaml:"read_timeout"`
+	GracefulTimeout int         `json:"graceful_timeout" yaml:"graceful_timeout"`
+	IdleTimeout     int         `json:"idle_timeout" yaml:"idle_timeout"`
+	Swagger         bool        `json:"swagger" yaml:"swagger"`
+	LocalSwagger    bool        `json:"local_swagger" yaml:"local_swagger"`
+	Schema          string      `json:"schema" yaml:"schema"`
+	App             string      `json:"app" yaml:"app"`
+	Host            string      `json:"host" yaml:"host"`
 	AppConfig       interface{} `json:"-"`
 }
 
