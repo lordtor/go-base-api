@@ -46,7 +46,7 @@ func HTTP(con ApiServer, config interface{}, r *mux.Router) {
 	header := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization", "SERVICE-AGENT", "Access-Control-Allow-Methods", "Date", "X-FORWARDED-FOR", "Accept", "Content-Length", "Accept-Encoding", "Service-Agent"})
 	credentials := handlers.AllowCredentials()
 	methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "PATCH", "HEAD", "OPTIONS"})
-	allowedOrigins := []string{"*"}
+	allowedOrigins := []string{}
 	allowedOrigins = common_lib.UpdateStructList(allowedOrigins, Con.AllowedOrigins)
 	allowedOrigins = common_lib.UpdateList(allowedOrigins, hostAPI)
 	origins := handlers.AllowedOrigins(allowedOrigins)
