@@ -15,6 +15,7 @@ import (
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	common_lib "github.com/lordtor/go-common-lib"
 	logging "github.com/lordtor/go-logging"
 	version "github.com/lordtor/go-version"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -43,8 +44,12 @@ func HTTP(con ApiServer, config interface{}, r *mux.Router) {
 
 	instrumentation := muxprom.NewDefaultInstrumentation()
 	header := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization", "SERVICE-AGENT", "Access-Control-Allow-Methods", "Date", "X-FORWARDED-FOR", "Accept", "Content-Length", "Accept-Encoding", "Service-Agent"})
+	credentials := handlers.AllowCredentials()
 	methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "PATCH", "HEAD", "OPTIONS"})
-	origins := handlers.AllowedOrigins([]string{"*", hostAPI})
+	allowedOrigins := []string{"*"}
+	allowedOrigins = common_lib.UpdateStructList(allowedOrigins, Con.AllowedOrigins)
+	allowedOrigins = common_lib.UpdateList(allowedOrigins, hostAPI)
+	origins := handlers.AllowedOrigins(allowedOrigins)
 	r.Use(instrumentation.Middleware)
 	if Con.Swagger {
 		if Con.LocalSwagger {
@@ -69,7 +74,7 @@ func HTTP(con ApiServer, config interface{}, r *mux.Router) {
 	}
 	r.Use(mux.CORSMethodMiddleware(r))
 	srv := &http.Server{
-		Handler:      handlers.CORS(header, methods, origins)(r),
+		Handler:      handlers.CORS(header, credentials, methods, origins)(r),
 		Addr:         fmt.Sprint(":", Con.ListenPort),
 		WriteTimeout: time.Duration(Con.WriteTimeout) * time.Second,
 		ReadTimeout:  time.Duration(Con.ReadTimeout) * time.Second,

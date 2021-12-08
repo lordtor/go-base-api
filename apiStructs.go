@@ -25,6 +25,7 @@ type ApiServer struct {
 	Schema          string      `json:"schema" yaml:"schema"`
 	App             string      `json:"app" yaml:"app"`
 	Host            string      `json:"host" yaml:"host"`
+	AllowedOrigins  []string    `json:"allowed_origins" yaml:"allowed_origins"`
 	AppConfig       interface{} `json:"-"`
 }
 

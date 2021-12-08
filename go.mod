@@ -6,11 +6,13 @@ require (
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
 	github.com/imdario/mergo v0.3.12
+	github.com/lordtor/go-common-lib v1.0.1
 	github.com/lordtor/go-logging v0.1.3
 	github.com/lordtor/go-version v0.1.1
 	github.com/prometheus/client_golang v1.11.0
 	github.com/swaggo/http-swagger v1.1.2
 	gitlab.com/msvechla/mux-prometheus v0.0.2
+	gotest.tools v2.2.0+incompatible
 )
 
 require (
@@ -25,9 +27,11 @@ require (
 	github.com/go-openapi/spec v0.20.0 // indirect
 	github.com/go-openapi/swag v0.19.12 // indirect
 	github.com/golang/protobuf v1.4.3 // indirect
+	github.com/google/go-cmp v0.5.5 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/mailru/easyjson v0.7.6 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.26.0 // indirect
 	github.com/prometheus/procfs v0.6.0 // indirect
