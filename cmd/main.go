@@ -16,17 +16,14 @@ package main
 
 import (
 	"context"
-	// "docs"
 	"fmt"
 
-	ex "github.com/lordtor/go-base-api/internal/pkg/extend_config"
+	"github.com/lordtor/go-base-api/cmd/docs"
 
 	api "github.com/lordtor/go-base-api/api"
-
+	ex "github.com/lordtor/go-base-api/internal/pkg/extend_config"
 	trace "github.com/lordtor/go-trace-lib"
-	"github.com/swaggo/swag/example/basic/docs"
 
-	// "github.com/lordtor/go-base-api/public/pkg/trace"
 	logging "github.com/lordtor/go-logging"
 	version "github.com/lordtor/go-version"
 )

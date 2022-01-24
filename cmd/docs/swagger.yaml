@@ -1,0 +1,78 @@
+definitions:
+  api.JSONResult:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
+info:
+  contact:
+    email: admin@mail.ru
+    name: API Support
+    url: https://jira.url
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://sample.url
+paths:
+  /conf:
+    get:
+      consumes:
+      - application/json
+      description: Internal method
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: desc
+          schema:
+            $ref: '#/definitions/api.JSONResult'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.JSONResult'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.JSONResult'
+        "405":
+          description: Method Not Allowed
+          schema:
+            $ref: '#/definitions/api.JSONResult'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.JSONResult'
+      summary: Show config for service
+      tags:
+      - internal
+  /health:
+    get:
+      consumes:
+      - application/json
+      description: Internal method
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: desc
+          schema:
+            $ref: '#/definitions/api.JSONResult'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.JSONResult'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.JSONResult'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.JSONResult'
+      summary: Health check
+      tags:
+      - internal
+swagger: "2.0"
