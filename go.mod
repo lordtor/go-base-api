@@ -1,4 +1,4 @@
-module github.com/lordtor/go-base-api/api
+module github.com/lordtor/go-base-api
 
 go 1.17
 
