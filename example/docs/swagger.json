@@ -13,7 +13,7 @@
         }
     },
     "paths": {
-        "/conf": {
+        "/env": {
             "get": {
                 "description": "Internal method",
                 "consumes": [
@@ -30,31 +30,31 @@
                     "200": {
                         "description": "desc",
                         "schema": {
-                            "$ref": "#/definitions/api.JSONResult"
+                            "$ref": "#/definitions/go_base_api.JSONResult"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/api.JSONResult"
+                            "$ref": "#/definitions/go_base_api.JSONResult"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/api.JSONResult"
+                            "$ref": "#/definitions/go_base_api.JSONResult"
                         }
                     },
                     "405": {
                         "description": "Method Not Allowed",
                         "schema": {
-                            "$ref": "#/definitions/api.JSONResult"
+                            "$ref": "#/definitions/go_base_api.JSONResult"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/api.JSONResult"
+                            "$ref": "#/definitions/go_base_api.JSONResult"
                         }
                     }
                 }
@@ -77,25 +77,72 @@
                     "200": {
                         "description": "desc",
                         "schema": {
-                            "$ref": "#/definitions/api.JSONResult"
+                            "$ref": "#/definitions/go_base_api.JSONResult"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/api.JSONResult"
+                            "$ref": "#/definitions/go_base_api.JSONResult"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/api.JSONResult"
+                            "$ref": "#/definitions/go_base_api.JSONResult"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/api.JSONResult"
+                            "$ref": "#/definitions/go_base_api.JSONResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/info": {
+            "get": {
+                "description": "Internal method",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "internal"
+                ],
+                "summary": "Show config for service",
+                "responses": {
+                    "200": {
+                        "description": "desc",
+                        "schema": {
+                            "$ref": "#/definitions/go_base_api.JSONResult"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/go_base_api.JSONResult"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/go_base_api.JSONResult"
+                        }
+                    },
+                    "405": {
+                        "description": "Method Not Allowed",
+                        "schema": {
+                            "$ref": "#/definitions/go_base_api.JSONResult"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/go_base_api.JSONResult"
                         }
                     }
                 }
@@ -103,7 +150,7 @@
         }
     },
     "definitions": {
-        "api.JSONResult": {
+        "go_base_api.JSONResult": {
             "type": "object",
             "properties": {
                 "code": {

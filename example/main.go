@@ -18,10 +18,10 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/lordtor/go-base-api/cmd/docs"
+	"github.com/lordtor/go-base-api/example/docs"
 
 	api "github.com/lordtor/go-base-api"
-	ex "github.com/lordtor/go-base-api/internal/pkg/extend_config"
+	ex "github.com/lordtor/go-base-api/example/internal/pkg/extend_config"
 	trace "github.com/lordtor/go-trace-lib"
 
 	logging "github.com/lordtor/go-logging"

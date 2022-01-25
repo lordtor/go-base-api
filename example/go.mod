@@ -1,11 +1,10 @@
-module go-base-api/example
+module github.com/lordtor/go-base-api/example
 
 go 1.17
 
 require (
 	github.com/imdario/mergo v0.3.12
-	github.com/lordtor/go-base-api v0.2.5
-	github.com/lordtor/go-base-api/api v0.0.0-20220125061537-c4ea3507c1fd
+	github.com/lordtor/go-base-api v0.2.7
 	github.com/lordtor/go-basic-config v0.1.9
 	github.com/lordtor/go-logging v0.1.3
 	github.com/lordtor/go-trace-lib v0.0.3
@@ -32,7 +31,7 @@ require (
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/lordtor/go-common-lib v1.0.3 // indirect
-	github.com/mailru/easyjson v0.7.6 // indirect
+	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
 	github.com/prometheus/client_golang v1.12.0 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
@@ -50,11 +49,11 @@ require (
 	go.opentelemetry.io/otel/metric v0.26.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.3.0 // indirect
 	go.opentelemetry.io/otel/trace v1.3.0 // indirect
-	golang.org/x/net v0.0.0-20210805182204-aaa1db679c0d // indirect
+	golang.org/x/net v0.0.0-20220121210141-e204ce36a2ba // indirect
 	golang.org/x/sys v0.0.0-20220114195835-da31bd327af9 // indirect
 	golang.org/x/text v0.3.7 // indirect
-	golang.org/x/tools v0.1.7 // indirect
-	google.golang.org/protobuf v1.26.0 // indirect
+	golang.org/x/tools v0.1.8 // indirect
+	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/resty.v1 v1.12.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )

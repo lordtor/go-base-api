@@ -1,5 +1,5 @@
 definitions:
-  api.JSONResult:
+  go_base_api.JSONResult:
     properties:
       code:
         type: integer
@@ -17,7 +17,7 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: https://sample.url
 paths:
-  /conf:
+  /env:
     get:
       consumes:
       - application/json
@@ -28,23 +28,23 @@ paths:
         "200":
           description: desc
           schema:
-            $ref: '#/definitions/api.JSONResult'
+            $ref: '#/definitions/go_base_api.JSONResult'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/api.JSONResult'
+            $ref: '#/definitions/go_base_api.JSONResult'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/api.JSONResult'
+            $ref: '#/definitions/go_base_api.JSONResult'
         "405":
           description: Method Not Allowed
           schema:
-            $ref: '#/definitions/api.JSONResult'
+            $ref: '#/definitions/go_base_api.JSONResult'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/api.JSONResult'
+            $ref: '#/definitions/go_base_api.JSONResult'
       summary: Show config for service
       tags:
       - internal
@@ -59,20 +59,51 @@ paths:
         "200":
           description: desc
           schema:
-            $ref: '#/definitions/api.JSONResult'
+            $ref: '#/definitions/go_base_api.JSONResult'
         "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/api.JSONResult'
+            $ref: '#/definitions/go_base_api.JSONResult'
         "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/api.JSONResult'
+            $ref: '#/definitions/go_base_api.JSONResult'
         "500":
           description: Internal Server Error
           schema:
-            $ref: '#/definitions/api.JSONResult'
+            $ref: '#/definitions/go_base_api.JSONResult'
       summary: Health check
+      tags:
+      - internal
+  /info:
+    get:
+      consumes:
+      - application/json
+      description: Internal method
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: desc
+          schema:
+            $ref: '#/definitions/go_base_api.JSONResult'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/go_base_api.JSONResult'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/go_base_api.JSONResult'
+        "405":
+          description: Method Not Allowed
+          schema:
+            $ref: '#/definitions/go_base_api.JSONResult'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/go_base_api.JSONResult'
+      summary: Show config for service
       tags:
       - internal
 swagger: "2.0"
