@@ -75,15 +75,15 @@ func (con *ApiServerConfig) InitializeApiServerConfig(conf ApiServerConfig, conf
 		"Content-Length", "Accept-Encoding", "Service-Agent"}
 	allowedMethods := []string{"GET", "POST", "PUT", "PATCH", "HEAD", "OPTIONS"}
 	err := mergo.Merge(con, ApiServerConfig{
-		ListenPort:      8765,
+		ListenPort:      8080,
 		WriteTimeout:    30,
 		ReadTimeout:     30,
 		GracefulTimeout: 15,
 		IdleTimeout:     60,
 		Swagger:         false,
-		Prometheus:      true,
+		Prometheus:      false,
 		LocalSwagger:    false,
-		Schema:          "https",
+		Schema:          "http",
 		AllowedOrigins:  allowedOrigins,
 		AllowedHeaders:  allowedHeaders,
 		AllowedMethods:  allowedMethods,
@@ -204,7 +204,6 @@ func (a *API) initializeBaseRoutes() {
 	a.Router.HandleFunc("/env", a.ShowConfig()).Methods(http.MethodGet)
 	a.Router.HandleFunc("/health", a.Health()).Methods(http.MethodGet)
 	a.Router.HandleFunc("/info", a.ShowInfo()).Methods(http.MethodGet)
-	//a.Router.HandleFunc("/vault", a.Vault()).Methods(http.MethodGet)
 }
 
 // ShowInfo godoc

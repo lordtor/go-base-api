@@ -29,8 +29,9 @@ import (
 )
 
 var (
-	Log             = logging.Log
-	Conf            = ex.C{}
+	Log  = logging.Log
+	Conf = ex.C{}
+	// Bootstrap local & bin version.
 	binVersion      = "0.1.1"
 	aBuildNumber    = "00000"
 	aBuildTimeStamp = ""
@@ -39,46 +40,39 @@ var (
 )
 
 func init() {
+	// Bootstrap configs and logging.
 	logging.InitLog("")
 	version.InitVersion(binVersion, aBuildNumber, aBuildTimeStamp, aGitBranch, aGitHash)
 	Conf.ReloadConfig()
 	Conf.API.App = Conf.AppName
+	Conf.Trace.Environment = Conf.ProfileName
+	Conf.Trace.ServiceName = Conf.AppName
+	Conf.Trace.ServiceVersion = version.AppVersion.Version
 	Conf.API.InitializeApiServerConfig(Conf.API, Conf)
 	logging.ChangeLogLevel(Conf.LogLevel)
 	logging.Log.Error(Conf)
 }
 func main() {
 	ctx := context.Background()
+	// Bootstrap swagger
 	if Conf.API.Swagger {
 		docs.SwaggerInfo.Title = fmt.Sprintf("Swagger  %s", Conf.AppName)
 		docs.SwaggerInfo.Version = version.GetVersion().Version
 		docs.SwaggerInfo.BasePath = fmt.Sprintf("/%s", Conf.AppName)
 		docs.SwaggerInfo.Description = "Basic only internal methods!"
 		docs.SwaggerInfo.Schemes = []string{Conf.API.Schema}
-		hostAPI := ""
-		if Conf.API.LocalSwagger {
-			hostAPI = fmt.Sprintf("%s:%d", Conf.API.Host, Conf.API.ListenPort)
-		} else {
-			hostAPI = Conf.API.Host
-		}
-		docs.SwaggerInfo.Host = hostAPI
+		docs.SwaggerInfo.Host = Conf.API.ApiHost
 	}
 	// Bootstrap tracer.
-	prv, err := trace.NewProvider(trace.ProviderConfig{
-		JaegerEndpoint: "",
-		JaegerHost:     "localhost",
-		JaegerPort:     "6831",
-		ServiceName:    "client",
-		ServiceVersion: "1.0.1",
-		Environment:    "dev",
-		Disabled:       false,
-	})
+	prv, err := trace.NewProvider(Conf.Trace)
 	if err != nil {
 		Log.Fatalln(err)
 	}
 	defer prv.Close(ctx)
+	// Bootstrap api.
 	a := api.API{}
 	a.Initialize(Conf.API, Conf)
-	// a.Mount(fmt.Sprintf("/%s/anothe api/", Conf.AppName), vaultAPI.Routes(vaultConfig))
+	// Mount anothe routes
+	// a.Mount(fmt.Sprintf("/%s/anothe api/", Conf.AppName), anothe.Routes(Conf.Anothe))
 	a.Run()
 }

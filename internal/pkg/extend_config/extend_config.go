@@ -11,13 +11,14 @@ import (
 	"github.com/imdario/mergo"
 	base_config "github.com/lordtor/go-basic-config"
 	logging "github.com/lordtor/go-logging"
-
+	trace "github.com/lordtor/go-trace-lib"
 	"gopkg.in/yaml.v3"
 )
 
 type C struct {
 	base_config.ApplicationConfig `yaml:"app"`
-	API                           api.ApiServerConfig `yaml:"api"`
+	API                           api.ApiServerConfig  `yaml:"api"`
+	Trace                         trace.ProviderConfig `yaml:"trace"`
 }
 
 func (conf *C) GetParamsFromYml(path string) error {

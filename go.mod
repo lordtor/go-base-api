@@ -7,7 +7,7 @@ require (
 	github.com/lordtor/go-base-api/api v0.0.0-20220124135631-fd881153849e
 	github.com/lordtor/go-basic-config v0.1.9
 	github.com/lordtor/go-logging v0.1.3
-	github.com/lordtor/go-trace-lib v0.0.1
+	github.com/lordtor/go-trace-lib v0.0.3
 	github.com/lordtor/go-version v0.1.1
 	github.com/swaggo/swag v1.7.8
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
@@ -20,8 +20,8 @@ require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/felixge/httpsnoop v1.0.2 // indirect
-	github.com/go-logr/logr v1.2.1 // indirect
-	github.com/go-logr/stdr v1.2.0 // indirect
+	github.com/go-logr/logr v1.2.2 // indirect
+	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect
 	github.com/go-openapi/jsonreference v0.19.6 // indirect
 	github.com/go-openapi/spec v0.20.4 // indirect

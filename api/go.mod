@@ -8,7 +8,7 @@ require (
 	github.com/imdario/mergo v0.3.12
 	github.com/lordtor/go-common-lib v1.0.3
 	github.com/lordtor/go-logging v0.1.3
-	github.com/lordtor/go-trace-lib v0.0.1
+	github.com/lordtor/go-trace-lib v0.0.3
 	github.com/lordtor/go-version v0.1.1
 	github.com/prometheus/client_golang v1.12.0
 	github.com/swaggo/http-swagger v1.2.0
@@ -25,8 +25,8 @@ require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/felixge/httpsnoop v1.0.2 // indirect
-	github.com/go-logr/logr v1.2.1 // indirect
-	github.com/go-logr/stdr v1.2.0 // indirect
+	github.com/go-logr/logr v1.2.2 // indirect
+	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect
 	github.com/go-openapi/jsonreference v0.19.6 // indirect
 	github.com/go-openapi/spec v0.20.4 // indirect
