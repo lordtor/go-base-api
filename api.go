@@ -1,4 +1,4 @@
-package api
+package go-base-api
 
 import (
 	"context"

@@ -20,7 +20,7 @@ import (
 
 	"github.com/lordtor/go-base-api/cmd/docs"
 
-	api "github.com/lordtor/go-base-api/api"
+	api "github.com/lordtor/go-base-api"
 	ex "github.com/lordtor/go-base-api/internal/pkg/extend_config"
 	trace "github.com/lordtor/go-trace-lib"
 
@@ -36,7 +36,7 @@ var (
 	aBuildNumber    = "00000"
 	aBuildTimeStamp = ""
 	aGitBranch      = "master"
-	aGitHash        = "xcb765656vxc908bvbcv"
+	aGitHash        = ""
 )
 
 func init() {

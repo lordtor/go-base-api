@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/lordtor/go-base-api/api"
+	api "github.com/lordtor/go-base-api"
 
 	"github.com/imdario/mergo"
 	base_config "github.com/lordtor/go-basic-config"
