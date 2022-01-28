@@ -21,7 +21,8 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	swagger "github.com/swaggo/http-swagger"
 	muxprom "gitlab.com/msvechla/mux-prometheus/pkg/middleware"
-	"go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux"
+
+	// "go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 	"go.opentelemetry.io/otel/attribute"
 )
@@ -106,7 +107,7 @@ func (a *API) Initialize(conf ApiServerConfig, config interface{}) {
 	a.InitializePrometheus()
 	a.Router.Use(Logging)
 	a.Router.Use(PanicRecovery)
-	a.Router.Use(otelmux.Middleware(a.Config.App))
+	//a.Router.Use(otelmux.Middleware(a.Config.App))
 	a.initializeBaseRoutes()
 
 }

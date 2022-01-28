@@ -13,7 +13,6 @@ require (
 	github.com/prometheus/client_golang v1.12.0
 	github.com/swaggo/http-swagger v1.2.0
 	gitlab.com/msvechla/mux-prometheus v0.0.2
-	go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux v0.28.0
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.28.0
 	go.opentelemetry.io/otel v1.3.0
 )
