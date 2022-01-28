@@ -287,7 +287,7 @@ func getConfig(ctx context.Context, con interface{}) interface{} {
 func (a *API) Health() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		respData := JSONResult{Code: http.StatusOK, Data: map[string]bool{"Alive": true}, Message: ""}
-		a.Resp(&respData, w, r.Context())
+		a.RespNoTrace(&respData, w)
 	}
 }
 
@@ -310,7 +310,20 @@ func PanicRecovery(next http.Handler) http.Handler {
 		next.ServeHTTP(w, req)
 	})
 }
-
+func (a *API) RespNoTrace(data *JSONResult, w http.ResponseWriter) {
+	w.Header().Set(DefaultCT[0], DefaultCT[1])
+	resp, err := json.Marshal(data)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.WriteHeader(data.Code)
+	intE, err := w.Write(resp)
+	if err != nil {
+		http.Error(w, err.Error(), intE)
+		return
+	}
+}
 func (a *API) Resp(data *JSONResult, w http.ResponseWriter, ctx context.Context) {
 	_, span := trace.NewSpan(ctx, "Resp", nil)
 	defer span.End()
