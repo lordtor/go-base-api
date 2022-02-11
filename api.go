@@ -38,22 +38,23 @@ type JSONResult struct {
 	Data    interface{} `json:"data,omitempty"`
 }
 type ApiServerConfig struct {
-	ListenPort      int         `json:"listen_port" yaml:"listen_port"`
-	WriteTimeout    int         `json:"write_timeout" yaml:"write_timeout"`
-	ReadTimeout     int         `json:"read_timeout" yaml:"read_timeout"`
-	GracefulTimeout int         `json:"graceful_timeout" yaml:"graceful_timeout"`
-	IdleTimeout     int         `json:"idle_timeout" yaml:"idle_timeout"`
-	Swagger         bool        `json:"swagger" yaml:"swagger"`
-	Prometheus      bool        `json:"prometheus" yaml:"prometheus"`
-	LocalSwagger    bool        `json:"local_swagger" yaml:"local_swagger"`
-	Schema          string      `json:"schema" yaml:"schema"`
-	App             string      `json:"app" yaml:"app"`
-	Host            string      `json:"host" yaml:"host"`
-	ApiHost         string      `json:"api_host" yaml:"api_host"`
-	AllowedOrigins  []string    `json:"allowed_origins" yaml:"allowed_origins"`
-	AllowedHeaders  []string    `json:"allowed_header" yaml:"allowed_header"`
-	AllowedMethods  []string    `json:"allowed_methods" yaml:"allowed_methods"`
-	AppConfig       interface{} `json:"-"`
+	ListenPort           int         `json:"listen_port" yaml:"listen_port"`
+	WriteTimeout         int         `json:"write_timeout" yaml:"write_timeout"`
+	ReadTimeout          int         `json:"read_timeout" yaml:"read_timeout"`
+	GracefulTimeout      int         `json:"graceful_timeout" yaml:"graceful_timeout"`
+	IdleTimeout          int         `json:"idle_timeout" yaml:"idle_timeout"`
+	Swagger              bool        `json:"swagger" yaml:"swagger"`
+	Prometheus           bool        `json:"prometheus" yaml:"prometheus"`
+	LocalSwagger         bool        `json:"local_swagger" yaml:"local_swagger"`
+	Schema               string      `json:"schema" yaml:"schema"`
+	App                  string      `json:"app" yaml:"app"`
+	Host                 string      `json:"host" yaml:"host"`
+	ApiHost              string      `json:"api_host" yaml:"api_host"`
+	AllowedOrigins       []string    `json:"allowed_origins" yaml:"allowed_origins"`
+	AllowedHeaders       []string    `json:"allowed_header" yaml:"allowed_header"`
+	AllowedMethods       []string    `json:"allowed_methods" yaml:"allowed_methods"`
+	AppConfig            interface{} `json:"-"`
+	IgnoreLoggingRequest []string    `json:"ignore_logging_request" yaml:"ignore_logging_request"`
 }
 
 func (con *ApiServerConfig) ApiServerConfigUpdate(conf ApiServerConfig, config interface{}) {
@@ -75,19 +76,21 @@ func (con *ApiServerConfig) InitializeApiServerConfig(conf ApiServerConfig, conf
 		"SERVICE-AGENT", "Access-Control-Allow-Methods", "Date", "X-FORWARDED-FOR", "Accept",
 		"Content-Length", "Accept-Encoding", "Service-Agent"}
 	allowedMethods := []string{"GET", "POST", "PUT", "PATCH", "HEAD", "OPTIONS"}
+	ignoreLogging := []string{"/prometheus", "/health"}
 	err := mergo.Merge(con, ApiServerConfig{
-		ListenPort:      8080,
-		WriteTimeout:    30,
-		ReadTimeout:     30,
-		GracefulTimeout: 15,
-		IdleTimeout:     60,
-		Swagger:         false,
-		Prometheus:      false,
-		LocalSwagger:    false,
-		Schema:          "http",
-		AllowedOrigins:  allowedOrigins,
-		AllowedHeaders:  allowedHeaders,
-		AllowedMethods:  allowedMethods,
+		ListenPort:           8080,
+		WriteTimeout:         30,
+		ReadTimeout:          30,
+		GracefulTimeout:      15,
+		IdleTimeout:          60,
+		Swagger:              false,
+		Prometheus:           false,
+		LocalSwagger:         false,
+		Schema:               "http",
+		AllowedOrigins:       allowedOrigins,
+		AllowedHeaders:       allowedHeaders,
+		AllowedMethods:       allowedMethods,
+		IgnoreLoggingRequest: ignoreLogging,
 	})
 	if err != nil {
 		Log.Error("Cannot Merge data: ", err)
@@ -105,7 +108,7 @@ func (a *API) Initialize(conf ApiServerConfig, config interface{}) {
 	a.Config.InitializeApiServerConfig(conf, config)
 	a.InitializeSwagger()
 	a.InitializePrometheus()
-	a.Router.Use(Logging)
+	a.Router.Use(a.Logging)
 	a.Router.Use(PanicRecovery)
 	//a.Router.Use(otelmux.Middleware(a.Config.App))
 	a.initializeBaseRoutes()
@@ -291,11 +294,29 @@ func (a *API) Health() http.HandlerFunc {
 	}
 }
 
-func Logging(next http.Handler) http.Handler {
+// //Config ApiServerConfig
+// func Logg(Config ApiServerConfigr) http.Handler {
+// 	return func(next http.Handler) http.Handler {
+// 		return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+// 			start := time.Now()
+// 			next.ServeHTTP(w, req)
+// 			if !common_lib.SliceContain(Config.IgnoreLoggingRequest, req.RequestURI) {
+// 				Log.Debugf("%s %s %s", req.Method, req.RequestURI, time.Since(start))
+// 			} else {
+// 				Log.Tracef("%s %s %s", req.Method, req.RequestURI, time.Since(start))
+// 			}
+// 		})
+// 	}
+// }
+func (a *API) Logging(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 		start := time.Now()
 		next.ServeHTTP(w, req)
-		Log.Debugf("%s %s %s", req.Method, req.RequestURI, time.Since(start))
+		if !common_lib.SliceContain(a.Config.IgnoreLoggingRequest, req.RequestURI) {
+			Log.Debugf("%s %s %s", req.Method, req.RequestURI, time.Since(start))
+		} else {
+			Log.Tracef("%s %s %s", req.Method, req.RequestURI, time.Since(start))
+		}
 	})
 }
 

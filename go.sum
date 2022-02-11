@@ -266,10 +266,14 @@ github.com/lightstep/lightstep-tracer-common/golang/gogo v0.0.0-20190605223551-b
 github.com/lightstep/lightstep-tracer-go v0.18.1/go.mod h1:jlF1pusYV4pidLvZ+XD0UBX0ZE6WURAspgAczcDHrL4=
 github.com/lordtor/go-common-lib v1.0.3 h1:RxTjxKAuJpPV4CUAJWnPGLOs16css3OSvk0NNcovVnk=
 github.com/lordtor/go-common-lib v1.0.3/go.mod h1:VssBPUurtLqelxcb8A7FNkBqVJZ6fPXaH2CF+Q5MH78=
+github.com/lordtor/go-common-lib v1.0.4 h1:q5Oh0kM1v4gNDqpvB9VSmpCR3fRRDpztf1Yj91jJIBg=
+github.com/lordtor/go-common-lib v1.0.4/go.mod h1:BlqDxIkPt7IMY+gppYR5lBdNj0XleHwGkjhJ90x0SVI=
 github.com/lordtor/go-logging v0.1.3 h1:gnbl/4vqgnyWo25P3Ibz09kL3qVYCFb5m9zpODanA8k=
 github.com/lordtor/go-logging v0.1.3/go.mod h1:6QCLUlRiT1yzI2SXadpL3XBZSS/FcWeP1bdM2tOzGDU=
 github.com/lordtor/go-trace-lib v0.0.3 h1:MeecRe3z46KaLnKq1AOekuOuDUkFKBqwLJR7cwXFFXI=
 github.com/lordtor/go-trace-lib v0.0.3/go.mod h1:uYFj87KkBL+qRxTwZ8Gc21HHhlSqPastqka/7BL/xtM=
+github.com/lordtor/go-trace-lib v0.0.4 h1:vW4amRauMi2CcLQNGcXvmxvN7lKCSn5H/Yh0JQT/pWE=
+github.com/lordtor/go-trace-lib v0.0.4/go.mod h1:uYFj87KkBL+qRxTwZ8Gc21HHhlSqPastqka/7BL/xtM=
 github.com/lordtor/go-version v0.1.1 h1:noaknVANazqRwh1HYpzOeLoRllvJM7wR5fW0b61ucIQ=
 github.com/lordtor/go-version v0.1.1/go.mod h1:0AS4n/I1kQDVL+33wgJncmaUDwig9hFjVk7Jbf1WNXg=
 github.com/lyft/protoc-gen-validate v0.0.13/go.mod h1:XbGvPuh87YZc5TdIa2/I4pLk0QoUACkjt2znoq26NVQ=
