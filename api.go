@@ -109,7 +109,7 @@ func (a *API) Initialize(conf ApiServerConfig, config interface{}) {
 	a.InitializeSwagger()
 	a.InitializePrometheus()
 	a.Router.Use(a.Logging)
-	a.Router.Use(PanicRecovery)
+	a.Router.Use(a.PanicRecovery)
 	//a.Router.Use(otelmux.Middleware(a.Config.App))
 	a.initializeBaseRoutes()
 
@@ -320,12 +320,12 @@ func (a *API) Logging(next http.Handler) http.Handler {
 	})
 }
 
-func PanicRecovery(next http.Handler) http.Handler {
+func (a *API) PanicRecovery(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 		defer func() {
 			if err := recover(); err != nil {
-				http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 				Log.Error(err)
+				http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 			}
 		}()
 		next.ServeHTTP(w, req)

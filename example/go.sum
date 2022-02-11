@@ -270,6 +270,8 @@ github.com/lordtor/go-base-api v0.2.7 h1:hqFLDNGdL964sZfgVxrfV7ho6CJCV5u6MMLqBDv
 github.com/lordtor/go-base-api v0.2.7/go.mod h1:ZUAIupYvC4ymVoE+3Nm5oY2wcREkCUoWSlY3V6agTQA=
 github.com/lordtor/go-base-api v0.2.10 h1:ZNFAAxi/jy+iGjc7SctlsQhpTA1USVkPPsXmUOdjRMM=
 github.com/lordtor/go-base-api v0.2.10/go.mod h1:b+t64gOsKe8oB+H8cx8K348bwFDxJM8AwOs3v5/aPnA=
+github.com/lordtor/go-base-api v0.3.0 h1:3lOAyqP/d7/BtePDQk0tkRpNXA9LUU2HRV5Gx6RX5ho=
+github.com/lordtor/go-base-api v0.3.0/go.mod h1:Dh+aQ4J1h56skzIcJ21Usg58xgu5NwsPiF69RHtMVpg=
 github.com/lordtor/go-basic-config v0.1.9 h1:vzqTRRRLGFCS/QVTlzRycliiZu8i36hyYu58q4lOugA=
 github.com/lordtor/go-basic-config v0.1.9/go.mod h1:mSdaAjo57Z39L4ry9Jfo+mIkdB57CDF9ixB+UAB9Pzs=
 github.com/lordtor/go-common-lib v1.0.3 h1:RxTjxKAuJpPV4CUAJWnPGLOs16css3OSvk0NNcovVnk=

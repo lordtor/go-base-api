@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/imdario/mergo v0.3.12
-	github.com/lordtor/go-base-api v0.2.10
+	github.com/lordtor/go-base-api v0.3.0
 	github.com/lordtor/go-basic-config v0.1.9
 	github.com/lordtor/go-logging v0.1.3
 	github.com/lordtor/go-trace-lib v0.0.4

@@ -2,7 +2,7 @@
 app:
   app_name: sample_api
   profile_name: dev
-  log_level: Debug
+  log_level: Trace
 trace:
   jaeger_host: localhost
   jaeger_port: "6831"
